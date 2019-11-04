@@ -11,8 +11,13 @@
 #import "FCModelCachedObject.h"
 #import "FCModelDatabase.h"
 #import "FCModelNotificationCenter.h"
-#import "FMDatabase.h"
-#import "FMDatabaseAdditions.h"
+#ifdef FMDB_FRAMEWORK
+    #import <FMDB/FMDatabase.h>
+    #import <FMDB/FMDatabaseAdditions.h>
+#else
+    #import "FMDatabase.h"
+    #import "FMDatabaseAdditions.h"
+#endif
 #import <sqlite3.h>
 #import <Security/Security.h>
 
@@ -228,7 +233,7 @@ static inline BOOL checkForOpenDatabaseFatal(BOOL fatal)
         FMResultSet *s = [db executeQuery:expandedQuery, key];
         if (! s || db.lastErrorCode) { [self queryFailedInDatabase:db]; return; }
         NSError *error = nil;
-        if ([s nextWithError:&error]) model = [[self alloc] initWithFieldValues:s.resultDictionary existsInDatabaseAlready:YES];
+        if ([s next]) model = [[self alloc] initWithFieldValues:s.resultDictionary existsInDatabaseAlready:YES];
         [s close];
         queryProfileEnd();
         if (error && error.code != SQLITE_OK) [self queryFailedInDatabase:db];
@@ -248,7 +253,7 @@ static inline BOOL checkForOpenDatabaseFatal(BOOL fatal)
             FMResultSet *s = [db executeQuery:expandedQuery, self.primaryKey];
             if (! s || db.lastErrorCode) { [self.class queryFailedInDatabase:db]; return; }
             NSError *error = nil;
-            if ([s nextWithError:&error]) {
+            if ([s next]) {
                 [g_fieldInfo[self.class] enumerateKeysAndObjectsUsingBlock:^(NSString *key, id obj, BOOL *stop) {
                     id suppliedValue = s.resultDictionary[key];
                     if (suppliedValue) [self setValue:(suppliedValue == NSNull.null ? nil : suppliedValue) forKey:key];
@@ -371,7 +376,7 @@ static inline BOOL checkForOpenDatabaseFatal(BOOL fatal)
             if (! s || db.lastErrorCode) [self queryFailedInDatabase:db];
 
             NSError *error = nil;
-            while ([s nextWithError:&error] && (! error || error.code == SQLITE_OK)) {
+            while ([s next] && (! error || error.code == SQLITE_OK)) {
                 NSDictionary *rowDictionary = s.resultDictionary;
                 instance = [self instanceWithPrimaryKey:rowDictionary[pkName] databaseRowValues:rowDictionary createIfNonexistent:NO];
                 if (onlyFirst) break;
@@ -441,7 +446,7 @@ static inline BOOL checkForOpenDatabaseFatal(BOOL fatal)
             FMResultSet *s = va_args ? [db executeQuery:expandedQuery withVAList:va_args] : [db executeQuery:expandedQuery withArgumentsInArray:args];
             if (! s || db.lastErrorCode) [self queryFailedInDatabase:db];
             NSError *error = nil;
-            if ([s nextWithError:&error]) {
+            if ([s next]) {
                 NSNumber *value = [s objectForColumnIndex:0];
                 if (value) count = value.unsignedIntegerValue;
             }
@@ -468,7 +473,7 @@ static inline BOOL checkForOpenDatabaseFatal(BOOL fatal)
             FMResultSet *s = va_args ? [db executeQuery:expandedQuery withVAList:va_args] : [db executeQuery:expandedQuery withArgumentsInArray:arguments];
             if (! s || db.lastErrorCode) [self queryFailedInDatabase:db];
             NSError *error = nil;
-            while ([s nextWithError:&error] && (! error || error.code == SQLITE_OK)) [columnArray addObject:[s objectForColumnIndex:0]];
+            while ([s next] && (! error || error.code == SQLITE_OK)) [columnArray addObject:[s objectForColumnIndex:0]];
             [s close];
             queryProfileEnd();
             if (error && error.code != SQLITE_OK) [self queryFailedInDatabase:db];
@@ -491,7 +496,7 @@ static inline BOOL checkForOpenDatabaseFatal(BOOL fatal)
             FMResultSet *s = va_args ? [db executeQuery:expandedQuery withVAList:va_args] : [db executeQuery:expandedQuery withArgumentsInArray:arguments];
             if (! s || db.lastErrorCode) [self queryFailedInDatabase:db];
             NSError *error = nil;
-            while ([s nextWithError:&error] && (! error || error.code == SQLITE_OK)) [rows addObject:s.resultDictionary];
+            while ([s next] && (! error || error.code == SQLITE_OK)) [rows addObject:s.resultDictionary];
             [s close];
             queryProfileEnd();
             if (error && error.code != SQLITE_OK) [self queryFailedInDatabase:db];
@@ -514,7 +519,7 @@ static inline BOOL checkForOpenDatabaseFatal(BOOL fatal)
             FMResultSet *s = va_args ? [db executeQuery:expandedQuery withVAList:va_args] : [db executeQuery:expandedQuery withArgumentsInArray:arguments];
             if (! s || db.lastErrorCode) [self queryFailedInDatabase:db];
             NSError *error = nil;
-            if ([s nextWithError:&error] && (! error || error.code == SQLITE_OK)) firstValue = [[s objectForColumnIndex:0] copy];
+            if ([s next] && (! error || error.code == SQLITE_OK)) firstValue = [[s objectForColumnIndex:0] copy];
             [s close];
             queryProfileEnd();
             if (error && error.code != SQLITE_OK) [self queryFailedInDatabase:db];

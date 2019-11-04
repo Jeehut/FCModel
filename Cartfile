@@ -1,0 +1,2 @@
+# A Cocoa / Objective-C wrapper around SQLite 
+github "ccgus/fmdb" ~> 2.1

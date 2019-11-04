@@ -8,10 +8,10 @@
 #import <Foundation/Foundation.h>
 #include <AvailabilityMacros.h>
 
-#ifdef COCOAPODS
-#import <FMDB/FMDatabase.h>
+#ifdef FMDB_FRAMEWORK
+    #import <FMDB/FMDatabase.h>
 #else
-#import "FMDatabase.h"
+    #import "FMDatabase.h"
 #endif
 
 extern NSString * const FCModelException;
