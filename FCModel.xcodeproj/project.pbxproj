@@ -7,28 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E48B07B23705E1700C3FA36 /* FCModelDatabaseQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E48B07923705E1700C3FA36 /* FCModelDatabaseQueue.h */; };
+		2E48B07C23705E1700C3FA36 /* FCModelDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E48B07A23705E1700C3FA36 /* FCModelDatabaseQueue.m */; };
 		2E83EA952370419200CB17B2 /* FCModelCachedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E83EA8C2370419200CB17B2 /* FCModelCachedObject.m */; };
 		2E83EA962370419200CB17B2 /* FCModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E83EA8D2370419200CB17B2 /* FCModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2E83EA972370419200CB17B2 /* FCModelNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E83EA8E2370419200CB17B2 /* FCModelNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2E83EA982370419200CB17B2 /* FCModelDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E83EA8F2370419200CB17B2 /* FCModelDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E83EA992370419200CB17B2 /* FCModelCachedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E83EA902370419200CB17B2 /* FCModelCachedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2E83EA9A2370419200CB17B2 /* FCModelNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E83EA912370419200CB17B2 /* FCModelNotificationCenter.m */; };
 		2E83EA9B2370419200CB17B2 /* FCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E83EA922370419200CB17B2 /* FCModel.m */; };
-		2E83EA9D2370419200CB17B2 /* FCModelDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E83EA942370419200CB17B2 /* FCModelDatabase.m */; };
 		2E83EAA0237041EE00CB17B2 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E83EA9F237041EE00CB17B2 /* FMDB.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E48B07923705E1700C3FA36 /* FCModelDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCModelDatabaseQueue.h; sourceTree = "<group>"; };
+		2E48B07A23705E1700C3FA36 /* FCModelDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCModelDatabaseQueue.m; sourceTree = "<group>"; };
 		2E83EA702370413600CB17B2 /* FCModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FCModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E83EA8C2370419200CB17B2 /* FCModelCachedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCModelCachedObject.m; sourceTree = "<group>"; };
 		2E83EA8D2370419200CB17B2 /* FCModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCModel.h; sourceTree = "<group>"; };
-		2E83EA8E2370419200CB17B2 /* FCModelNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCModelNotificationCenter.h; sourceTree = "<group>"; };
-		2E83EA8F2370419200CB17B2 /* FCModelDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCModelDatabase.h; sourceTree = "<group>"; };
 		2E83EA902370419200CB17B2 /* FCModelCachedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FCModelCachedObject.h; sourceTree = "<group>"; };
-		2E83EA912370419200CB17B2 /* FCModelNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCModelNotificationCenter.m; sourceTree = "<group>"; };
 		2E83EA922370419200CB17B2 /* FCModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCModel.m; sourceTree = "<group>"; };
 		2E83EA932370419200CB17B2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2E83EA942370419200CB17B2 /* FCModelDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FCModelDatabase.m; sourceTree = "<group>"; };
 		2E83EA9F237041EE00CB17B2 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = Carthage/Build/iOS/FMDB.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,10 +64,8 @@
 				2E83EA922370419200CB17B2 /* FCModel.m */,
 				2E83EA902370419200CB17B2 /* FCModelCachedObject.h */,
 				2E83EA8C2370419200CB17B2 /* FCModelCachedObject.m */,
-				2E83EA8F2370419200CB17B2 /* FCModelDatabase.h */,
-				2E83EA942370419200CB17B2 /* FCModelDatabase.m */,
-				2E83EA8E2370419200CB17B2 /* FCModelNotificationCenter.h */,
-				2E83EA912370419200CB17B2 /* FCModelNotificationCenter.m */,
+				2E48B07923705E1700C3FA36 /* FCModelDatabaseQueue.h */,
+				2E48B07A23705E1700C3FA36 /* FCModelDatabaseQueue.m */,
 				2E83EA932370419200CB17B2 /* Info.plist */,
 			);
 			path = FCModel;
@@ -92,10 +86,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E48B07B23705E1700C3FA36 /* FCModelDatabaseQueue.h in Headers */,
 				2E83EA992370419200CB17B2 /* FCModelCachedObject.h in Headers */,
 				2E83EA962370419200CB17B2 /* FCModel.h in Headers */,
-				2E83EA972370419200CB17B2 /* FCModelNotificationCenter.h in Headers */,
-				2E83EA982370419200CB17B2 /* FCModelDatabase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,10 +160,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E83EA9A2370419200CB17B2 /* FCModelNotificationCenter.m in Sources */,
 				2E83EA952370419200CB17B2 /* FCModelCachedObject.m in Sources */,
+				2E48B07C23705E1700C3FA36 /* FCModelDatabaseQueue.m in Sources */,
 				2E83EA9B2370419200CB17B2 /* FCModel.m in Sources */,
-				2E83EA9D2370419200CB17B2 /* FCModelDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
