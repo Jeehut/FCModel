@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2E83EA952370419200CB17B2 /* FCModelCachedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E83EA8C2370419200CB17B2 /* FCModelCachedObject.m */; };
-		2E83EA962370419200CB17B2 /* FCModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E83EA8D2370419200CB17B2 /* FCModel.h */; };
-		2E83EA972370419200CB17B2 /* FCModelNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E83EA8E2370419200CB17B2 /* FCModelNotificationCenter.h */; };
-		2E83EA982370419200CB17B2 /* FCModelDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E83EA8F2370419200CB17B2 /* FCModelDatabase.h */; };
-		2E83EA992370419200CB17B2 /* FCModelCachedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E83EA902370419200CB17B2 /* FCModelCachedObject.h */; };
+		2E83EA962370419200CB17B2 /* FCModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E83EA8D2370419200CB17B2 /* FCModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E83EA972370419200CB17B2 /* FCModelNotificationCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E83EA8E2370419200CB17B2 /* FCModelNotificationCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E83EA982370419200CB17B2 /* FCModelDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E83EA8F2370419200CB17B2 /* FCModelDatabase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E83EA992370419200CB17B2 /* FCModelCachedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E83EA902370419200CB17B2 /* FCModelCachedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E83EA9A2370419200CB17B2 /* FCModelNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E83EA912370419200CB17B2 /* FCModelNotificationCenter.m */; };
 		2E83EA9B2370419200CB17B2 /* FCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E83EA922370419200CB17B2 /* FCModel.m */; };
 		2E83EA9D2370419200CB17B2 /* FCModelDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E83EA942370419200CB17B2 /* FCModelDatabase.m */; };
