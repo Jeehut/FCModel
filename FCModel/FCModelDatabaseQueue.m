@@ -30,6 +30,7 @@
     if ( (self = [super init]) ) {
         self.name = NSStringFromClass(self.class);
         self.maxConcurrentOperationCount = 1;
+        [self setQualityOfService:NSQualityOfServiceUserInteractive];
         self.path = path;
     }
     return self;
