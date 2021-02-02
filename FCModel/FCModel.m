@@ -10,8 +10,7 @@
 #import "FCModel.h"
 #import "FCModelCachedObject.h"
 #import "FCModelDatabaseQueue.h"
-#import <FMDB/FMDatabase.h>
-#import <FMDB/FMDatabaseAdditions.h>
+@import FMDB;
 #import <sqlite3.h>
 @import Security;
 

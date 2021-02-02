@@ -7,7 +7,7 @@
 
 @import Foundation;
 
-#import <FMDB/FMDatabase.h>
+@import FMDB;
 
 // This serves the same role as FMDB's FMDatabaseQueue for FCModel, but with some differences:
 //

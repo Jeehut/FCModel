@@ -13,6 +13,7 @@ let package = Package(
             name: "FCModel",
             dependencies: ["FMDB"],
             path: "FCModel",
+            exclude: ["Info.plist"],
             publicHeadersPath: ""
         )
     ]
