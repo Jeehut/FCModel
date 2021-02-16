@@ -34,11 +34,6 @@ static NSMutableDictionary *g_instances = NULL;
 static dispatch_semaphore_t g_instancesReadLock;
 static NSMutableDictionary *g_enqueuedBatchNotifications = NULL;
 
-@interface FMDatabase (HackForVAListsSinceThisIsPrivate)
-- (FMResultSet *)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray*)arrayArgs orDictionary:(NSDictionary *)dictionaryArgs orVAList:(va_list)args;
-- (BOOL)executeUpdate:(NSString*)sql error:(NSError**)outErr withArgumentsInArray:(NSArray*)arrayArgs orDictionary:(NSDictionary *)dictionaryArgs orVAList:(va_list)args;
-@end
-
 static inline void onMainThreadAsync(void (^block)())
 {
     if ([NSThread isMainThread]) block();
@@ -367,6 +362,7 @@ static inline BOOL checkForOpenDatabaseFatal(BOOL fatal)
                 withArgumentsInArray:argsArray
                 orDictionary:nil
                 orVAList:args
+                shouldBind:YES
             ];
             if (! s) [self queryFailedInDatabase:db];
             BOOL stop = NO;
@@ -492,7 +488,7 @@ static inline BOOL checkForOpenDatabaseFatal(BOOL fatal)
     va_list *foolTheStaticAnalyzer = &args;
     va_start(args, queryAfterWHERE);
     [g_databaseQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet *s = [db executeQuery:[self expandQuery:[@"SELECT COUNT(*) FROM $T WHERE " stringByAppendingString:queryAfterWHERE]] withArgumentsInArray:nil orDictionary:nil orVAList:*foolTheStaticAnalyzer];
+        FMResultSet *s = [db executeQuery:[self expandQuery:[@"SELECT COUNT(*) FROM $T WHERE " stringByAppendingString:queryAfterWHERE]] withArgumentsInArray:nil orDictionary:nil orVAList:*foolTheStaticAnalyzer shouldBind:YES];
         if (! s) [self queryFailedInDatabase:db];
         if ([s next]) {
             NSNumber *value = [s objectForColumnIndex:0];
@@ -514,7 +510,7 @@ static inline BOOL checkForOpenDatabaseFatal(BOOL fatal)
     va_list *foolTheStaticAnalyzer = &args;
     va_start(args, query);
     [g_databaseQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet *s = [db executeQuery:[self expandQuery:query] withArgumentsInArray:nil orDictionary:nil orVAList:*foolTheStaticAnalyzer];
+        FMResultSet *s = [db executeQuery:[self expandQuery:query] withArgumentsInArray:nil orDictionary:nil orVAList:*foolTheStaticAnalyzer shouldBind:YES];
         if (! s) [self queryFailedInDatabase:db];
         while ([s next]) [columnArray addObject:[s objectForColumnIndex:0]];
         [s close];
@@ -532,7 +528,7 @@ static inline BOOL checkForOpenDatabaseFatal(BOOL fatal)
     va_list *foolTheStaticAnalyzer = &args;
     va_start(args, query);
         [g_databaseQueue inDatabase:^(FMDatabase *db) {
-            FMResultSet *s = [db executeQuery:[self expandQuery:query] withArgumentsInArray:nil orDictionary:nil orVAList:*foolTheStaticAnalyzer];
+            FMResultSet *s = [db executeQuery:[self expandQuery:query] withArgumentsInArray:nil orDictionary:nil orVAList:*foolTheStaticAnalyzer shouldBind:YES];
             if (! s) [self queryFailedInDatabase:db];
             while ([s next]) [rows addObject:s.resultDictionary];
             [s close];
@@ -550,7 +546,7 @@ static inline BOOL checkForOpenDatabaseFatal(BOOL fatal)
     va_list *foolTheStaticAnalyzer = &args;
     va_start(args, query);
     [g_databaseQueue inDatabase:^(FMDatabase *db) {
-        FMResultSet *s = [db executeQuery:[self expandQuery:query] withArgumentsInArray:nil orDictionary:nil orVAList:*foolTheStaticAnalyzer];
+        FMResultSet *s = [db executeQuery:[self expandQuery:query] withArgumentsInArray:nil orDictionary:nil orVAList:*foolTheStaticAnalyzer shouldBind:YES];
         if (! s) [self queryFailedInDatabase:db];
         if ([s next]) firstValue = [[s objectForColumnIndex:0] copy];
         [s close];
