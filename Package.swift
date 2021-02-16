@@ -6,7 +6,7 @@ let package = Package(
     platforms: [.macOS(.v10_10), .iOS(.v9)],
     products: [.library(name: "FCModel", targets: ["FCModel"])],
     dependencies: [
-      .package(name: "FMDB", url: "https://github.com/ccgus/fmdb.git", from: "2.7.7"),
+      .package(name: "FMDB", url: "https://github.com/Jeehut/fmdb.git", .branch("master")),
     ],
     targets: [
         .target(
